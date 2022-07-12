@@ -1,32 +1,32 @@
 ﻿using Nba.models;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Nba.Models
 {
     public class PaginationWrapper
     {
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public Player Data { get; set; }
 
-        [JsonProperty("meta")]
+        [JsonPropertyName("meta")]
         public PaginationOptions Meta { get; set; }
     }
 
     public class PaginationOptions
     {
-        [JsonProperty("total_pages")]
+        [JsonPropertyName("total_pages")]
         public int TotalPages { get; set; }
 
-        [JsonProperty("current_page")]
+        [JsonPropertyName("current_page")]
         public int CurrentPage { get; set; }
 
-        [JsonProperty("next_page")]
+        [JsonPropertyName("next_page")]
         public int NextPage { get; set; }
 
-        [JsonProperty("per_page")]
+        [JsonPropertyName("per_page")]
         public int PerPage { get; set; }
 
-        [JsonProperty("total_count")]
+        [JsonPropertyName("total_count")]
         public int TotalCount { get; set; }
     }
 }

@@ -1,13 +1,31 @@
 ﻿using Nba.models;
 using Nba.Services.Interfaces;
+using System.Text.Json;
 
 namespace Nba.Services.Implementations
 {
     internal class PlayerService : IPlayerService
     {
-        public Player GetPlayer(int id)
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public PlayerService(IHttpClientFactory httpClientFactory) =>
+            _httpClientFactory = httpClientFactory;
+
+        public async Task<Player?> GetPlayerAsync(int id)
         {
-            throw new NotImplementedException();
+            var httpClient = _httpClientFactory.CreateClient("Nba"); // REVISAR
+            var httpResponseMessage = await httpClient.GetAsync("players"); // REVISAR
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
+
+                return await JsonSerializer.DeserializeAsync<Player>(contentStream);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IEnumerable<Player> GetPlayersTallerThan(int height)
