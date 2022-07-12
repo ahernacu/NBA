@@ -6,7 +6,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient("Nba", httpClient => httpClient.BaseAddress = new Uri("https://www.balldontlie.io/api/v1/"));  // REVISAR
+builder.Services.AddHttpClient("NbaV1", httpClient => httpClient.BaseAddress = new Uri("https://www.balldontlie.io/api/v1/"));  // REVISAR
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Nba.Services.Implementations
 {
-    internal class PlayerService : IPlayerService
+    public class PlayerService : IPlayerService
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -13,7 +13,7 @@ namespace Nba.Services.Implementations
 
         public async Task<Player?> GetPlayerAsync(int id)
         {
-            var httpClient = _httpClientFactory.CreateClient("Nba"); // REVISAR
+            var httpClient = _httpClientFactory.CreateClient("NbaV1"); // REVISAR
             var httpResponseMessage = await httpClient.GetAsync("players"); // REVISAR
 
             if (httpResponseMessage.IsSuccessStatusCode)

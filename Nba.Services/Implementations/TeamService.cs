@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Nba.Services.Implementations
 {
-    internal class TeamService : ITeamService
+    public class TeamService : ITeamService
     {
         private readonly IHttpClientFactory _httpClientFactory;
 

@@ -2,7 +2,7 @@
 
 namespace Nba.Services.Interfaces
 {
-    internal interface ITeamService
+    public interface ITeamService
     {
         Task<Team?> GetTeamAsync(int id);
     }

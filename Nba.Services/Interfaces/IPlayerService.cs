@@ -2,7 +2,7 @@
 
 namespace Nba.Services.Interfaces
 {
-    internal interface IPlayerService
+    public interface IPlayerService
     {
         Task<Player?> GetPlayerAsync(int id);
         IEnumerable<Player> GetPlayersTallerThan215();
