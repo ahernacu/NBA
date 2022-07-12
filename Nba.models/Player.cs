@@ -12,7 +12,7 @@ namespace Nba.models
             public string position { get; set; }
             public string height_feet { get; set; }
             public string height_inches { get; set; }
-            public string weigth_pounds { get; set; }
+            public string weight_pounds { get; set; }
         }
 
         public class meta
