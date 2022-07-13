@@ -11,16 +11,16 @@ namespace Nba.Services.Implementations
         public TeamService(IHttpClientFactory httpClientFactory) =>
             _httpClientFactory = httpClientFactory;
 
-        public async Task<Team?> GetTeamAsync(int id)
+        public async Task<Team?> GetTeamAsync(int teamId)
         {
-            var httpClient = _httpClientFactory.CreateClient("Nba"); // REVISAR
-            var httpResponseMessage = await httpClient.GetAsync("teams"); // REVISAR
+            var httpClient = _httpClientFactory.CreateClient("NbaV1"); // REVISAR
+            var httpResponseMessage = await httpClient.GetAsync($"teams/{teamId}"); // REVISAR
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
-
-                return await JsonSerializer.DeserializeAsync<Team>(contentStream);
+                var team = await JsonSerializer.DeserializeAsync<Team>(contentStream);
+                return team;
             }
             else
             {

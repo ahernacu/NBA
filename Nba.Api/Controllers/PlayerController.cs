@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Nba.Services.Implementations;
+using Nba.Services.Interfaces;
 
 namespace Nba.Api.Controllers
 {
@@ -7,12 +7,18 @@ namespace Nba.Api.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        PlayerService playerService;
+       private readonly IPlayerService _playerService;
+        public PlayerController(IPlayerService playerService)
+        {
+            _playerService = playerService;
+        }
 
-        [HttpGet]
+        [HttpGet("{playerId}")]
         public async Task<IActionResult> Get([FromRoute] int playerId)
         {
-            return Ok();
+            var player = await _playerService.GetPlayerAsync(playerId);
+
+            return Ok(player);
         }
     }
 }

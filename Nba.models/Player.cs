@@ -17,14 +17,14 @@ namespace Nba.models
         [JsonPropertyName("position")]
         public string Position { get; set; }
 
-        //[JsonPropertyName("height_feet")]
-        //public int? HeightFeet { get; set; }
+        [JsonPropertyName("height_feet")]
+        public int? HeightFeet { get; set; }
 
-        //[JsonPropertyName("height_inches")]
-        //public int? HeightInches { get; set; }
+        [JsonPropertyName("height_inches")]
+        public int? HeightInches { get; set; }
 
-        //[JsonPropertyName("weight_pounds")]
-        //public int? WeightPounds { get; set; }
+        [JsonPropertyName("weight_pounds")]
+        public int? WeightPounds { get; set; }
 
     }
 }
